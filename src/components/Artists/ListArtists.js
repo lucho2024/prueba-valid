@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native';
 import Api from '../../utils/Api';
+import Accordion from './Accordion';
 
 export default function ListArtists() {
   const [data, setData] = useState([]);
@@ -34,7 +35,7 @@ export default function ListArtists() {
       <FlatList
         data={data}
         initialNumToRender={4}
-        renderItem={({item}) => <Text>{item.name}</Text>}
+        renderItem={({item}) => <Accordion item={item} />}
         ListEmptyComponent={() => (
           <ActivityIndicator size="large" color="white" />
         )}
