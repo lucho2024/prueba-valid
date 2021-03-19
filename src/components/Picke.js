@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
+import {Text, View, StyleSheet} from 'react-native';
 
 export default function Picke({page, setPage}) {
   const [tam, setTam] = useState([]);
@@ -13,12 +14,27 @@ export default function Picke({page, setPage}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <Picker
-      selectedValue={page}
-      onValueChange={itemValue => setPage(itemValue)}>
-      {tam.map(n => (
-        <Picker.Item key={n} label={n + ''} value={n} />
-      ))}
-    </Picker>
+    <View style={styles.containerPicker}>
+      <Text style={styles.text}>Page : </Text>
+      <Picker
+        selectedValue={page}
+        onValueChange={itemValue => setPage(itemValue)}>
+        {tam.map(n => (
+          <Picker.Item key={n} label={n + ''} value={n} />
+        ))}
+      </Picker>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  containerPicker: {
+    display: 'flex',
+    marginHorizontal: 15,
+  },
+  text: {
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 28,
+  },
+});
