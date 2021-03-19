@@ -7,8 +7,8 @@ import {
   Text,
   Platform,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 import Api from '../../utils/Api';
+import Picker from '../Picke';
 import Accordion from './Accordion';
 
 export default function ListArtists() {
@@ -17,16 +17,9 @@ export default function ListArtists() {
   const [mostrar, setMostrar] = useState(false);
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  const [tam, setTam] = useState([]);
-  const arr = [];
 
   useEffect(() => {
     fetchData();
-
-    for (let index = 1; index <= 50; index++) {
-      arr.push(index);
-    }
-    setTam(arr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
@@ -45,13 +38,7 @@ export default function ListArtists() {
     <>
       {mostrar ? (
         <>
-          <Picker
-            selectedValue={page}
-            onValueChange={itemValue => setPage(itemValue)}>
-            {tam.map(n => (
-              <Picker.Item key={n} label={n + ''} value={n} />
-            ))}
-          </Picker>
+          <Picker page={page} setPage={setPage} />
           {/* Renderiza una lista de datos mediante se van cargando los datos,
         con flatlist no toca esperar a que se renderizen todos los datos
         para que se muestren en la pantalla */}
