@@ -22,20 +22,20 @@ export default function Accordion({item}) {
         </View>
       </TouchableWithoutFeedback>
       <View style={expanded ? styles.containerExpand : {display: 'none'}}>
-        <View>
-          <Text>Listeners :</Text>
-          <Text>{item.listeners}</Text>
-        </View>
-        <View>
-          <Text>Mbid :</Text>
-          <Text>{item.mbid}</Text>
-        </View>
-        <View>
-          <Text>Url :</Text>
-          <Text>{item.url}</Text>
-        </View>
-        <View>
+        <View style={styles.containerImgExpand}>
           <Image source={{uri: item.image[2]['#text']}} style={styles.img} />
+        </View>
+        <View style={styles.containerTextExpand}>
+          <Text style={styles.text}>Listeners :</Text>
+          <Text style={styles.text}>{item.listeners}</Text>
+        </View>
+        <View style={styles.containerTextExpand}>
+          <Text style={styles.text}>Mbid :</Text>
+          <Text style={styles.text}>{item.mbid}</Text>
+        </View>
+        <View style={styles.containerTextExpand}>
+          <Text style={styles.text}>Url :</Text>
+          <Text style={styles.text}>{item.url}</Text>
         </View>
       </View>
     </View>

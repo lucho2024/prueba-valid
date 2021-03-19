@@ -16,7 +16,17 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   containerExpand: {
-    marginHorizontal: 5,
+    marginHorizontal: 10,
+  },
+  containerTextExpand: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginVertical: 10,
+  },
+  containerImgExpand: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
@@ -27,9 +37,14 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     color: 'black',
     marginLeft: 10,
+    flex: 1,
+    flexWrap: 'wrap',
   },
   img: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
+    borderRadius: 150,
+    borderWidth: 1,
+    borderColor: 'black',
   },
 });
