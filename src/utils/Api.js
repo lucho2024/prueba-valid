@@ -17,7 +17,7 @@ class Api {
     const url = `${BASE_URL}geo.gettoptracks&country=spain&api_key=${API_KEY}&format=json&page=${page}`;
     const resultado = await axios.get(url);
 
-    return resultado.data;
+    return resultado.data.tracks.track;
   };
 }
 

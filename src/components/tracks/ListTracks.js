@@ -11,7 +11,7 @@ import {Picker} from '@react-native-picker/picker';
 import Api from '../../utils/Api';
 import Accordion from './Accordion';
 
-export default function ListArtists() {
+export default function ListTracks() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -34,10 +34,9 @@ export default function ListArtists() {
   }, [refresh, page]);
 
   const fetchData = async () => {
-    const res = await Api.getTopArtists(page);
+    const res = await Api.getTopTracks(page);
     setData(res);
   };
-
   return (
     <>
       <Picker
@@ -48,8 +47,8 @@ export default function ListArtists() {
         ))}
       </Picker>
       {/* Renderiza una lista de datos mediante se van cargando los datos,
-          con flatlist no toca esperar a que se renderizen todos los datos
-          para que se muestren en la pantalla */}
+        con flatlist no toca esperar a que se renderizen todos los datos
+        para que se muestren en la pantalla */}
       <FlatList
         data={data}
         initialNumToRender={4}
