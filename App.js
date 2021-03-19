@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import NavStack from './src/nav/NavStack';
 
 const App = () => {
-  return <View>hola</View>;
+  return <NavStack />;
 };
 
 export default App;
