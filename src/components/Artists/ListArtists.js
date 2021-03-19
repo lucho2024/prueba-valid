@@ -6,6 +6,7 @@ import {
   RefreshControl,
   Text,
 } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 import Api from '../../utils/Api';
 import Accordion from './Accordion';
 
@@ -14,15 +15,22 @@ export default function ListArtists() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [tam, setTam] = useState([]);
+  const arr = [];
 
   useEffect(() => {
     fetchData();
+
+    for (let index = 1; index <= 50; index++) {
+      arr.push(index);
+    }
+    setTam(arr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refresh]);
+  }, [refresh, page]);
 
   const fetchData = async () => {
     const res = await Api.getTopArtists(page);
@@ -31,7 +39,13 @@ export default function ListArtists() {
 
   return (
     <>
-      {console.log(data)}
+      <Picker
+        selectedValue={page}
+        onValueChange={itemValue => setPage(itemValue)}>
+        {tam.map(n => (
+          <Picker.Item key={n} label={n + ''} value={n} />
+        ))}
+      </Picker>
       <FlatList
         data={data}
         initialNumToRender={4}
